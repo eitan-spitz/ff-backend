@@ -6,7 +6,8 @@ class UsersController < ApplicationController
     end
 
     def profile
-        render json: { user: UserSerializer.new(@user) }, status: :accepted
+        @token = encode_token(user_id: @user.id)
+        render json: { user: UserSerializer.new(@user), jwt: @token }, status: :accepted
     end
 
     def create
