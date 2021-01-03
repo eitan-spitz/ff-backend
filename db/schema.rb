@@ -25,9 +25,7 @@ ActiveRecord::Schema.define(version: 2020_12_23_182518) do
   create_table "user_games", force: :cascade do |t|
     t.integer "user_id"
     t.integer "game_id"
-    t.integer "level"
-    t.integer "final_score"
-    t.integer "score_in_round"
+    t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

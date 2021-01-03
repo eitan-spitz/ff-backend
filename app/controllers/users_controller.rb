@@ -6,14 +6,16 @@ class UsersController < ApplicationController
     end
 
     def profile
-        @token = encode_token(user_id: @user.id)
-        render json: { user: UserSerializer.new(@user), jwt: @token }, status: :accepted
+        render json: { user: UserSerializer.new(@user)}, status: :accepted
     end
 
     def create
         @user = User.create(user_params)
         if @user.valid?
             @token = encode_token(user_id: @user.id)
+            Game.all.each do |game|
+                UserGame.create(user_id: @user.id, game_id: game.id, score: 0)
+            end
             render json: { user: UserSerializer.new(@user), jwt: @token }, status: :created
         else
             render json: { error: 'failed to create user' }, status: :not_acceptable

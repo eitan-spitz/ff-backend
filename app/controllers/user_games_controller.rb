@@ -1,6 +1,6 @@
 class UserGamesController < ApplicationController
     def index
-        user_games = UserGame.all
+        user_games = UserGame.find_by(user_id: @user.id)
         render json: user_games
     end
 
