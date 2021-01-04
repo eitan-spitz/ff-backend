@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :games
-  resources :users, only: [:create, :index, :show] do
-    resources :user_games
+  resources :games, only: [:index, :show]
+  resources :users, only: [:create, :index, :show, :destroy] do
+    resources :user_games, only: [:index, :show, :update]
   end
   post '/login', to: 'auth#create'
   get '/profile', to: 'users#profile'
