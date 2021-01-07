@@ -27,6 +27,11 @@ class UsersController < ApplicationController
         render json: { success: 'User deleted successfully' }
     end
 
+    def update
+        @user.update!(user_params)
+        render json: { user: UserSerializer.new(@user)}
+    end
+
     private
     def user_params
         params.require(:user).permit(:username, :password, :email)
