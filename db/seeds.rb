@@ -9,7 +9,7 @@ Game.destroy_all
 UserGame.destroy_all
 User.destroy_all
 
-game1 = Game.create(name: "Math", time_to_complete_round: 45, description: "You have 45 seconds to answer the math question, as you get better the math problems get Harder. Good Luck!")
+game1 = Game.create(name: "Math", time_to_complete_round: 20, description: "You have 20 seconds to answer the math question, as you get better the math problems get Harder. Good Luck!")
 
 user1 = User.create(username: "bob", email: "bob@bob.bob", password: "bob")
 user2 = User.create(username: "beth", email: "beth@beth.beth", password: "beth")
